@@ -12,6 +12,7 @@ public class PlayerControl : MonoBehaviour
     public Sprite rightMove;
     public GameObject laserBeam;
     public GameObject PlayerSprite;
+    public GameObject onDeath;
     // Start is called before the first frame update
     void Start()
     {
@@ -46,17 +47,17 @@ public class PlayerControl : MonoBehaviour
         }
 
         if ((Input.GetKeyUp(KeyCode.LeftArrow)) || (Input.GetKeyUp(KeyCode.A))) {
-            //Changes sprite to face to the left
+            //Changes sprite to face forwards
             GetComponent<SpriteRenderer>().sprite = forwardFace;
         }
 
         if ((Input.GetKeyDown(KeyCode.RightArrow)) || (Input.GetKeyDown(KeyCode.D))) {
-            //Changes sprite to face to the left
+            //Changes sprite to face to the right
             GetComponent<SpriteRenderer>().sprite = rightMove;
         }
 
         if ((Input.GetKeyUp(KeyCode.RightArrow)) || (Input.GetKeyUp(KeyCode.D))) {
-            //Changes sprite to face to the left
+            //Changes sprite to face forwards
             GetComponent<SpriteRenderer>().sprite = forwardFace;
         }
     }
@@ -66,6 +67,8 @@ public class PlayerControl : MonoBehaviour
         // Destroy itself (the player) and the enemy laser or sprite
         Destroy(PlayerSprite, 0.0f);
         Destroy(col.gameObject, 0.0f);
+        onDeath = (GameObject)Instantiate(onDeath, transform.position, Quaternion.identity);
+        Destroy(onDeath, 1.7f);
     }
 }
 }

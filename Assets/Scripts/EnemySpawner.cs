@@ -8,7 +8,7 @@ public class EnemySpawner : MonoBehaviour
 public GameObject enemy;
 
 // Variable to know how fast we should create new enemies
-public float spawnTime = 2;
+public float spawnTime = 0;
 
 void Start() {
     // Call the 'addEnemy' function in 0 second

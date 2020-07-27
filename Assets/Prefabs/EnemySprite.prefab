@@ -144,7 +144,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 20
-  laserSpeed: -5
+  laserSpeed: -10
   enemy: {fileID: 3496445590951092785}
   laserBeam: {fileID: 7031765616503838402, guid: d974cbe4dca084c4a8d881ce881f5af1,
     type: 3}
+  onDeath: {fileID: 7751941205537019859, guid: b95edc6cba232c641b0bb11505160282, type: 3}
