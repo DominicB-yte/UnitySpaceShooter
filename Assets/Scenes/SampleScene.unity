@@ -496,7 +496,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 804189f549a8e234c90dfec4c3a29db4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 10
+  moveSpeed: 15
   laserSpeed: 15
   forwardFace: {fileID: 21300000, guid: 813097d27b0b20c418a35297cbf44be7, type: 3}
   leftMove: {fileID: 21300000, guid: 1270e375b0697b442a5df00ef8cf4eb9, type: 3}

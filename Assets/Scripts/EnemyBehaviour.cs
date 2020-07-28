@@ -6,12 +6,14 @@ public class EnemyBehaviour : MonoBehaviour
 {
     public int moveSpeed; 
     public int laserSpeed;
-    // public Sprite forwardFace;
-    // public Sprite leftMove;
-    // public Sprite rightMove;
+    public Sprite forwardFace;
+    public Sprite leftMove;
+    public Sprite rightMove;
     public GameObject enemy;
     public GameObject laserBeam;
     public GameObject onDeath;
+    public AudioSource deathExplosion;
+    public AudioSource laserShot;
     bool changeDir = true;
     float Xpos;
     float Xleft = -13.0f;
@@ -42,6 +44,7 @@ public class EnemyBehaviour : MonoBehaviour
         // Destroy itself (the enemy) and the bullet
         Destroy(enemy);
         Destroy(col.gameObject);
+        deathExplosion.PlayOneShot(deathExplosion.clip, 0.5f);
         onDeath = (GameObject)Instantiate(onDeath, transform.position, Quaternion.identity);
         Destroy(onDeath, 1.7f);
     }
@@ -53,6 +56,7 @@ public class EnemyBehaviour : MonoBehaviour
             transform.position = Vector2.MoveTowards(transform.position, xPosition, 10 * Time.deltaTime);
 
             if (transform.position.x == Xpos) {
+                GetComponent<SpriteRenderer>().sprite = forwardFace;
                 Xpos = Random.Range(-13.0f, 13.0f);
                 //create bullet
                 GameObject laser = Instantiate(laserBeam, transform.position, Quaternion.identity);
@@ -60,6 +64,14 @@ public class EnemyBehaviour : MonoBehaviour
                 laser.GetComponent<Rigidbody2D>().velocity = Vector2.up * laserSpeed;
                 //Destroy bullet
                 Destroy(laser, 2);
+            }
+
+            if (transform.position.x > Xpos) {
+                GetComponent<SpriteRenderer>().sprite = leftMove;
+            }
+            
+            if (transform.position.x < Xpos) {
+                GetComponent<SpriteRenderer>().sprite = rightMove;
             }
         }
     }
